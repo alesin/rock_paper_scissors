@@ -51,6 +51,31 @@ function playRound(playerChoice, computerChoice) {
 }
 
 // *****    TESTING the 1st TWO functions    before move to the final GAME stage *****
-let playerSelect = 'rock'
-let computerSelect = computerPlay() 
-console.log(playRound(playerSelect, computerSelect))
+// let playerSelect = 'rock'
+// let computerSelect = computerPlay() 
+// console.log(playRound(playerSelect, computerSelect))
+
+function game(numOfRounds) {
+    let playerPoints = 0
+    let computerPoints = 0
+  
+    for (let i=0; i<numOfRounds; i++) {
+      // Pit two computers against each other... or try your luck against the machine!
+      // IN OTHER WORDS  ===  only uncomment 1 of the 2 lines below
+        let player = computerPlay()
+  //       let player = prompt('Choose rock, paper or scissors!')
+        
+        let computer = computerPlay()
+        
+        let outcome = playRound(player, computer)
+        console.log(outcome)
+        if (outcome[0] === 'computer') computerPoints++
+        else playerPoints++
+    }
+    console.log(playerPoints, computerPoints)
+  
+      if (playerPoints > computerPoints) return `You are victorious! Final score: ${playerPoints} vs ${computerPoints}`
+      else return `You have fallen to your enemy! Final score: ${computerPoints} vs ${playerPoints}`
+}
+
+// console.log(game(3))
